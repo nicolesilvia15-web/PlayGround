@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="theme-color" content="#dbe5c9">
+  <meta name="description" content="Mosslight — a cozy afterworld where you raise tiny monsters and grow a home out of the ruins.">
+  <title>Mosslight — a cozy afterworld</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-logo" viewBox="0 0 32 32">
+      <path d="M16 28c-6.8-2.1-10.6-7.1-10-12.8C6.5 9 11.3 4.4 18.4 4c.9 7.1-1.1 12.6-7.1 17.2 3.3-.2 6.1-1.3 8.4-3.5 2.8-2.7 3.9-6.7 3.8-11.4C27 9 30 13.4 28.1 19 26.3 24 20.7 27.4 16 28Z" fill="currentColor"/>
+      <path d="M8 29c1.6-5.8 3.8-10.7 7.2-14.5" fill="none" stroke="#f8efd9" stroke-width="1.7" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-dew" viewBox="0 0 24 24">
+      <path d="M12 2.8S5.9 10 5.9 14.2a6.1 6.1 0 0 0 12.2 0C18.1 10 12 2.8 12 2.8Z" fill="currentColor"/>
+      <path d="M9 14.5c.1 1.9 1.1 2.9 2.6 3.1" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="1.4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-berry" viewBox="0 0 24 24">
+      <path d="M12.3 8.2c2.2-2.2 4.5-2.4 6.9-1.5-.4 2.8-1.9 4.6-4.4 5.3" fill="currentColor" opacity=".82"/>
+      <circle cx="9.2" cy="13.3" r="4.7" fill="currentColor"/>
+      <circle cx="15.1" cy="16.2" r="4.1" fill="currentColor" opacity=".88"/>
+      <path d="M12 7.7c-.4-2.4.5-4.2 2.6-5.3.9 2.2.3 4-1.7 5.3Z" fill="#5c7752"/>
+      <circle cx="7.8" cy="12" r=".8" fill="#fff" opacity=".6"/>
+    </symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24">
+      <path d="M12 2.6c.7 5.1 2.5 7 7.6 7.7-5.1.7-6.9 2.6-7.6 7.7-.7-5.1-2.5-7-7.6-7.7 5.1-.7 6.9-2.6 7.6-7.7Z" fill="currentColor"/>
+      <path d="M18.4 16.8c.3 2.1 1.1 2.9 3.2 3.2-2.1.3-2.9 1.1-3.2 3.2-.3-2.1-1.1-2.9-3.2-3.2 2.1-.3 2.9-1.1 3.2-3.2Z" fill="currentColor" opacity=".7"/>
+    </symbol>
+    <symbol id="i-build" viewBox="0 0 24 24">
+      <path d="M4 20c.9-2.9 5-3.3 6.4-1.1 1.2 1.9-.5 3.2-3.1 3.2H4v-2.1Z" fill="currentColor"/>
+      <path d="m10.3 16.9 7.9-10.6M16.7 4.2l3.1 2.3c.8.6 1 1.7.3 2.5l-.4.5-5.8-4.3.4-.5c.7-.9 1.6-.9 2.4-.5Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24">
+      <path d="M12 21s-8.3-4.8-9.5-10.1C1.5 6.2 5.2 3 8.4 3c1.7 0 3 .9 3.6 2.1C12.6 3.9 13.9 3 15.6 3c3.2 0 6.9 3.2 5.9 7.9C20.3 16.2 12 21 12 21Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-paw" viewBox="0 0 24 24">
+      <ellipse cx="6.5" cy="10.1" rx="2.7" ry="3.4" transform="rotate(-22 6.5 10.1)" fill="currentColor"/>
+      <ellipse cx="11" cy="6" rx="2.7" ry="3.5" transform="rotate(-5 11 6)" fill="currentColor"/>
+      <ellipse cx="16.4" cy="6.9" rx="2.7" ry="3.5" transform="rotate(17 16.4 6.9)" fill="currentColor"/>
+      <ellipse cx="20.6" cy="12" rx="2.3" ry="3" transform="rotate(33 20.6 12)" fill="currentColor"/>
+      <path d="M13.4 12.1c2.9 0 6.5 3 6.5 5.8 0 2.4-1.8 3.6-4.1 3.2-1.5-.3-2.4-.6-4.1 0-2.4.8-4.4-.4-4.4-2.8 0-2.9 3.3-6.2 6.1-6.2Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-book" viewBox="0 0 24 24">
+      <path d="M3 5.2c3.2-1.4 6.1-1 9 1.1v14c-2.9-2.1-5.8-2.5-9-1.1v-14Zm18 0v14c-3.2-1.4-6.1-1-9 1.1v-14c2.9-2.1 5.8-2.5 9-1.1Z" fill="currentColor"/>
+      <path d="M3 5.2v14c3.2-1.4 6.1-1 9 1.1m9-15.1v14c-3.2-1.4-6.1-1-9 1.1M12 6.3v14" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width="1.1"/>
+    </symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24">
+      <path d="M4 9.2h3.5L12.8 5v14L7.5 14.8H4V9.2Z" fill="currentColor"/>
+      <path d="M16 8.2c1.7 1.7 1.7 5.9 0 7.6M18.8 5.6c3.1 3 3.1 9.7 0 12.8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24">
+      <path d="M4 9.2h3.5L12.8 5v14L7.5 14.8H4V9.2Z" fill="currentColor"/>
+      <path d="m16.2 9.5 5 5m0-5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-help" viewBox="0 0 24 24">
+      <path d="M9.2 8.5c.2-1.7 1.4-2.8 3.1-2.8 1.8 0 3.1 1.1 3.1 2.7 0 1.3-.7 2-1.9 2.7-1.3.8-1.9 1.5-1.9 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="11.6" cy="18.6" r="1.3" fill="currentColor"/>
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.7" opacity=".55"/>
+    </symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.4 4.4 4.4L19 6.6" fill="none" stroke="currentColor" stroke-width="2.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="3" fill="currentColor"/><path d="M8.3 10V7.8a3.7 3.7 0 0 1 7.4 0V10" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M8.3 2.8c.5 3.3 1.6 4.4 4.9 4.9-3.3.5-4.4 1.6-4.9 4.9-.5-3.3-1.6-4.4-4.9-4.9 3.3-.5 4.4-1.6 4.9-4.9ZM17.2 12c.4 2.5 1.3 3.3 3.8 3.8-2.5.4-3.4 1.3-3.8 3.8-.4-2.5-1.3-3.3-3.8-3.8 2.5-.4 3.4-1.3 3.8-3.8Z" fill="currentColor"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.4" fill="currentColor"/><path d="M12 2.2v2.2M12 19.6v2.2M2.2 12h2.2M19.6 12h2.2M5.1 5.1l1.6 1.6M17.3 17.3l1.6 1.6M18.9 5.1l-1.6 1.6M6.7 17.3l-1.6 1.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3.5 11 8.5-7 8.5 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.8 9.4v10h12.4v-10M10 19.4v-5.2h4v5.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <div class="app" id="app">
+    <canvas id="world" aria-label="The Mosslight Hollow sanctuary. Tap critters, buildings, and floating treasures."></canvas>
+    <div class="sky-wash" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="brand" aria-label="Mosslight, a cozy afterworld">
+        <span class="brand-mark"><svg><use href="#i-logo"></use></svg></span>
+        <span class="brand-words"><strong>Mosslight</strong><small>a cozy afterworld</small></span>
+      </div>
+
+      <div class="resources" aria-label="Resources">
+        <button class="resource dew" id="dewPill" aria-label="Dewdrops">
+          <span class="res-icon"><svg><use href="#i-dew"></use></svg></span>
+          <span class="res-value" id="dewVal">60</span>
+          <span class="res-plus" aria-hidden="true">+</span>
+        </button>
+        <button class="resource berry" id="berryPill" aria-label="Snacks">
+          <span class="res-icon"><svg><use href="#i-berry"></use></svg></span>
+          <span class="res-value" id="berryVal">6</span>
+          <span class="res-plus" aria-hidden="true">+</span>
+        </button>
+        <button class="resource spark" id="sparkPill" aria-label="Sparks">
+          <span class="res-icon"><svg><use href="#i-spark"></use></svg></span>
+          <span class="res-value" id="sparkVal">4</span>
+          <span class="res-plus" aria-hidden="true">+</span>
+        </button>
+      </div>
+
+      <div class="top-actions">
+        <button class="round-btn" id="helpBtn" aria-label="How to play"><svg><use href="#i-help"></use></svg></button>
+        <button class="round-btn" id="soundBtn" aria-label="Mute sound"><svg><use href="#i-sound"></use></svg></button>
+      </div>
+    </header>
+
+    <aside class="hearth-card" id="hearthCard" aria-label="Hearth level">
+      <div class="hearth-top">
+        <span class="hearth-level"><span id="hearthLevel">1</span></span>
+        <div>
+          <p class="eyebrow">The hollow</p>
+          <h2>Hearth <span id="hearthName">Sprout</span></h2>
+        </div>
+        <button class="tiny-info" id="hearthInfo" aria-label="Hearth details">?</button>
+      </div>
+      <div class="meter-track hearth-meter"><span id="hearthFill" style="width: 16%"></span></div>
+      <p class="hearth-note"><span id="palsCount">3</span> pals · <span id="hearthXp">12</span> / <span id="hearthNext">30</span> warmth</p>
+    </aside>
+
+    <aside class="quest-card" id="questCard" aria-label="Current task">
+      <div class="quest-head">
+        <span class="quest-kicker"><svg><use href="#i-sparkles"></use></svg> A small kindness</span>
+        <span class="quest-step" id="questStep">1 / 8</span>
+      </div>
+      <h3 id="questTitle">A gentle hello</h3>
+      <p id="questDesc">Give a pal two soft pats. Everyone is a little shy after the Hush.</p>
+      <div class="quest-progress">
+        <div class="meter-track"><span id="questFill" style="width: 0%"></span></div>
+        <span id="questCount">0 / 2</span>
+      </div>
+      <div class="quest-reward" id="questReward">
+        <span>Reward</span>
+        <span class="reward-chip"><svg><use href="#i-dew"></use></svg>+8</span>
+      </div>
+    </aside>
+
+    <div class="mobile-chips">
+      <button class="mobile-hearth" id="mobileHearth">
+        <span class="mini-level" id="miniLevel">1</span>
+        <span><b>Hearth</b><small id="miniHearthNote">Sprout · 12 warmth</small></span>
+      </button>
+      <button class="mobile-quest" id="mobileQuest">
+        <svg><use href="#i-sparkles"></use></svg>
+        <span id="miniQuest">A gentle hello <b>0/2</b></span>
+        <svg class="chev"><use href="#i-arrow"></use></svg>
+      </button>
+    </div>
+
+    <div class="scene-hint" id="sceneHint">
+      <span class="hint-hand" aria-hidden="true">☝</span>
+      <p><strong>Say hello</strong><br>Tap a little pal to meet them.</p>
+      <button class="hint-close" id="hintClose" aria-label="Dismiss tip"><svg><use href="#i-close"></use></svg></button>
+    </div>
+
+    <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+    <div class="burst-layer" id="burstLayer" aria-hidden="true"></div>
+
+    <div class="placement-bar" id="placementBar" hidden>
+      <span class="placement-thumb"><canvas id="placementThumb" width="76" height="76"></canvas></span>
+      <span class="placement-text"><small>Placing</small><strong id="placementName">Glowberry Bush</strong><em>Tap a clear patch of the Hollow</em></span>
+      <button class="text-btn placement-cancel" id="placementCancel">Tuck it away</button>
+    </div>
+
+    <nav class="dock" aria-label="Game menu">
+      <button class="dock-btn dock-build" id="buildBtn" data-action="build">
+        <span class="dock-icon"><svg><use href="#i-build"></use></svg></span>
+        <span>Build</span>
+      </button>
+      <button class="dock-btn" id="careBtn" data-action="care">
+        <span class="dock-icon"><svg><use href="#i-heart"></use></svg></span>
+        <span>Care</span>
+        <i class="dock-dot" id="careDot" aria-hidden="true"></i>
+      </button>
+      <div class="dock-center" aria-hidden="true">
+        <span class="dock-sprout"><i></i><i></i><i></i></span>
+      </div>
+      <button class="dock-btn" id="palsBtn" data-action="pals">
+        <span class="dock-icon"><svg><use href="#i-paw"></use></svg></span>
+        <span>Pals</span>
+      </button>
+      <button class="dock-btn" id="journalBtn" data-action="journal">
+        <span class="dock-icon"><svg><use href="#i-book"></use></svg></span>
+        <span>Journal</span>
+      </button>
+    </nav>
+
+    <section class="pal-panel" id="palPanel" aria-label="Critter care" hidden>
+      <button class="panel-close pal-close" id="palClose" aria-label="Close care panel"><svg><use href="#i-close"></use></svg></button>
+      <div class="pal-portrait-wrap">
+        <canvas id="palPortrait" width="170" height="170" aria-hidden="true"></canvas>
+        <span class="pal-mood" id="palMood">content</span>
+      </div>
+      <div class="pal-info">
+        <div class="pal-heading">
+          <div>
+            <p class="eyebrow" id="palSpecies">Moss bun</p>
+            <h2 id="palName">Mallow <span class="lvl" id="palLevel">Lv. 1</span></h2>
+          </div>
+          <div class="bond" id="palBond" aria-label="Bond hearts"><span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span></div>
+        </div>
+        <p class="pal-line" id="palLine">“Is it okay if I sit here a while?”</p>
+        <div class="needs">
+          <div class="need"><span class="need-ico snack"><svg><use href="#i-berry"></use></svg></span><div><label>Tummy</label><div class="meter-track small"><span id="hungerFill"></span></div></div></div>
+          <div class="need"><span class="need-ico joy"><svg><use href="#i-spark"></use></svg></span><div><label>Joy</label><div class="meter-track small"><span id="joyFill"></span></div></div></div>
+          <div class="need"><span class="need-ico rest"><svg><use href="#i-sun"></use></svg></span><div><label>Rest</label><div class="meter-track small"><span id="energyFill"></span></div></div></div>
+        </div>
+        <div class="pal-xp"><span>Friendship</span><div class="meter-track tiny"><span id="palXpFill"></span></div><span id="palXpText">2 / 24</span></div>
+      </div>
+      <div class="care-actions">
+        <button class="care-btn feed" id="feedBtn" aria-label="Feed one snack">
+          <span class="care-ico"><svg><use href="#i-berry"></use></svg></span>
+          <span><b>Snack</b><small>1 snack</small></span>
+        </button>
+        <button class="care-btn play" id="playBtn" aria-label="Play with a spark">
+          <span class="care-ico"><svg><use href="#i-spark"></use></svg></span>
+          <span><b>Play</b><small>1 spark</small></span>
+        </button>
+        <button class="care-btn pet" id="petBtn" aria-label="Pet your pal">
+          <span class="care-ico"><svg><use href="#i-heart"></use></svg></span>
+          <span><b>Pet</b><small>free</small></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="sheet build-sheet" id="buildSheet" aria-label="Build menu" hidden>
+      <div class="sheet-head">
+        <div>
+          <p class="eyebrow">Make it home</p>
+          <h2>Cozy things</h2>
+        </div>
+        <p class="sheet-sub">Choose something, then tap a clear patch of the Hollow.</p>
+        <button class="panel-close" id="buildClose" aria-label="Close build menu"><svg><use href="#i-close"></use></svg></button>
+      </div>
+      <div class="build-list" id="buildList"><!-- cards injected --></div>
+      <div class="build-foot">
+        <span class="build-tip"><i></i> Each cozy spot brings a little more life.</span>
+        <span class="swipe-cue" aria-hidden="true">swipe <svg><use href="#i-arrow"></use></svg></span>
+        <button class="text-btn" id="cancelBuild" hidden>Cancel placing</button>
+      </div>
+    </section>
+
+    <section class="sheet pals-sheet" id="palsSheet" aria-label="All pals" hidden>
+      <div class="sheet-head">
+        <div>
+          <p class="eyebrow">The household</p>
+          <h2>Little pals</h2>
+        </div>
+        <p class="sheet-sub" id="palsSub">Every friend was found in the quiet.</p>
+        <button class="panel-close" id="palsClose" aria-label="Close pals"><svg><use href="#i-close"></use></svg></button>
+      </div>
+      <div class="pals-grid" id="palsGrid"><!-- cards injected --></div>
+      <div class="sheet-foot"><span>Keep their tummies, spirits, and naps tended.</span><button class="text-btn" id="palsCare">Care for someone <svg><use href="#i-arrow"></use></svg></button></div>
+    </section>
+
+    <section class="sheet journal-sheet" id="journalSheet" aria-label="Journal" hidden>
+      <div class="sheet-head">
+        <div>
+          <p class="eyebrow">Field notes</p>
+          <h2>The Hollow's journal</h2>
+        </div>
+        <button class="panel-close" id="journalClose" aria-label="Close journal"><svg><use href="#i-close"></use></svg></button>
+      </div>
+      <div class="journal-body">
+        <div class="journal-story">
+          <div class="journal-illustration" aria-hidden="true">
+            <canvas id="journalArt" width="440" height="200"></canvas>
+          </div>
+          <p class="dropcap">After the Great Hush, the old world went quiet. Then the moss came back — and with it, the smallest monsters, blinking awake between the ruins. They are not very good at rebuilding. They are very good at being company.</p>
+          <p>You found a crooked patch of sunlight and called it home. Keep the fire warm, the snacks coming, and the little ones close. The rest will grow.</p>
+          <div class="journal-quote">“No one has to be big to make a place feel whole.”</div>
+        </div>
+        <div class="journal-stats">
+          <h3>In the hollow today</h3>
+          <div class="stat-line"><span>Warmth gathered</span><b id="statXp">12</b></div>
+          <div class="stat-line"><span>Cozy spots</span><b id="statBuildings">3</b></div>
+          <div class="stat-line"><span>Pals welcomed</span><b id="statPals">3</b></div>
+          <div class="stat-line"><span>Pats given</span><b id="statPets">0</b></div>
+          <div class="stat-line"><span>Snacks shared</span><b id="statFeeds">0</b></div>
+          <div class="how-list">
+            <h3>How to keep a hollow</h3>
+            <p><b>Care.</b> Tap a pal, then feed, play, or pet them. Happy pals make the whole Hollow warmer.</p>
+            <p><b>Build.</b> Spend dewdrops on cozy spots. Some quietly gather snacks, sparks, and dew.</p>
+            <p><b>Wander.</b> Tap floating treasures. Finish small kindnesses. New pals will find their way in.</p>
+          </div>
+          <button class="reset-btn" id="resetBtn">Start the hollow anew</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal-scrim" id="scrim" hidden></div>
+
+    <div class="welcome-card" id="welcomeCard" hidden>
+      <div class="welcome-art"><canvas id="welcomeArt" width="520" height="180"></canvas></div>
+      <p class="eyebrow">A little beginning</p>
+      <h2>Welcome to the Hollow</h2>
+      <p>The world huffed and puffed and fell asleep. You have a kettle, three small monsters, and a patch of stubborn green. That is enough to begin.</p>
+      <div class="welcome-tips">
+        <span><i class="tip-dot dew-dot"></i>Tap a pal to care for them</span>
+        <span><i class="tip-dot leaf-dot"></i>Build cozy spots to grow</span>
+        <span><i class="tip-dot spark-dot"></i>Tap glimmers in the grass</span>
+      </div>
+      <button class="primary-btn" id="welcomeBtn">Settle in <svg><use href="#i-arrow"></use></svg></button>
+      <button class="text-btn welcome-later" id="welcomeLater">Just look around</button>
+    </div>
+
+    <div class="level-up" id="levelUp" hidden>
+      <div class="levelup-rays" aria-hidden="true"></div>
+      <div class="levelup-card">
+        <p class="eyebrow">The Hollow grows</p>
+        <h2 id="levelUpTitle">Hearth Level 2</h2>
+        <p id="levelUpDesc">Bramble, a shy mushroom cat, has wandered in from the ferns.</p>
+        <div class="new-pal-row" id="newPalRow"><canvas id="newPalArt" width="180" height="180"></canvas></div>
+        <button class="primary-btn" id="levelUpBtn">Welcome them home</button>
+      </div>
+    </div>
+
+    <div class="confirm-card" id="confirmCard" hidden>
+      <p class="eyebrow">A fresh start</p>
+      <h2>Begin again?</h2>
+      <p>Your cozy spots and friendships will be tucked away. The Hollow will remember nothing.</p>
+      <div class="confirm-actions">
+        <button class="text-btn" id="cancelReset">Keep my hollow</button>
+        <button class="danger-btn" id="confirmReset">Begin again</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js" type="module"></script>
+</body>
+</html>
